@@ -1,176 +1,235 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="h-full overflow-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>光纤织网智守城脉 - 城市生命线智能监测</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        html { scroll-behavior: smooth; }
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .animate-fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans h-full m-0">
 
-    <nav class="fixed w-full bg-white shadow-md z-50">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="font-bold text-xl text-blue-600">光脉智联</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#intro" class="hover:text-blue-600">简介</a>
-                    <a href="#tech" class="hover:text-blue-600">技术展示</a>
-                    <a href="#cases" class="hover:text-blue-600">落地展示</a>
-                    <a href="#pricing" class="hover:text-blue-600">收费模式</a>
-                    <a href="#team" class="hover:text-blue-600">研发团队</a>
+                    <a href="#intro" class="hover:text-blue-600 font-medium transition-colors">简介</a>
+                    <a href="#tech" class="hover:text-blue-600 font-medium transition-colors">核心技术</a>
+                    <a href="#cases" class="hover:text-blue-600 font-medium transition-colors">落地案例</a>
+                    <a href="#pricing" class="hover:text-blue-600 font-medium transition-colors">收费模式</a>
+                    <a href="#team" class="hover:text-blue-600 font-medium transition-colors">研发团队</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section id="intro" class="pt-32 pb-20 bg-blue-900 text-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">光纤织网 智守城脉</h1>
-            <p class="text-xl mb-8 max-w-3xl mx-auto text-blue-100">
-                针对全国超290万公里地下管线和百万座城市桥梁的老化风险，我们以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
-            </p>
-        </div>
-    </section>
+    <!-- 全屏滚动主容器 -->
+    <div class="scroll-container h-full overflow-y-auto snap-y snap-mandatory scroll-smooth">
 
-    <section id="tech" class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">核心技术指标</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100">
-                    <a href="#" class="group inline-flex items-center text-xl font-bold mb-4 text-blue-600 hover:text-blue-800 transition-colors">
-                        硬件全域感知 <span class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform">➔</span>
-                    </a>
-                    <ul class="space-y-3 text-slate-600">
-                        <li>单套设备最大探测距离达 25 公里。</li>
-                        <li>事件定位精度 ≤5 米，报警响应时间 ≤5 秒。</li>
-                        <li>采用结构增敏与空间压缩感知技术，灵敏度提升 30% 以上。</li>
-                        <li>事件识别准确率 ≥93%，误报率 ≤5%。</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100">
-                    <a href="#" class="group inline-flex items-center text-xl font-bold mb-4 text-blue-600 hover:text-blue-800 transition-colors">
-                        光脉智联 SaaS 平台 <span class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform">➔</span>
-                    </a>
-                    <ul class="space-y-3 text-slate-600">
-                        <li>内置 AI 声纹识别算法，自动识别管道泄漏、违规施工及微形变。</li>
-                        <li>集成 GIS 地理信息系统，支持二维/三维可视化数字孪生展示。</li>
-                        <li>底层采用国密 SM4 标准加密，提供零信任架构防护。</li>
-                    </ul>
+        <!-- SECTION 1: 简介 -->
+        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center bg-blue-900 text-white relative">
+            <div class="max-w-4xl mx-auto px-4 text-center animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-wide">光纤织网 智守城脉</h1>
+                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+                    针对全国超 290 万公里地下管线和百万座城市桥梁的老化风险，我们以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
+                </p>
+                <div class="animate-bounce mt-12 text-blue-300 text-sm">向下滑动探索 ↓</div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 核心技术 -->
+        <section id="tech" class="w-full h-screen snap-start flex items-center justify-center bg-white">
+            <div class="max-w-6xl mx-auto px-4 w-full animate-fade-in">
+                <h2 class="text-3xl font-bold text-center mb-12 relative inline-block w-full text-slate-900">核心技术指标</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300">
+                        <a href="#" class="group inline-flex items-center text-xl font-bold mb-4 text-blue-600 hover:text-blue-800 transition-colors">
+                            硬件全域感知 <span class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform">➔</span>
+                        </a>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 单套设备最大探测距离达 25 公里。</li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 事件定位精度 ≤5 米，报警响应时间 ≤5 秒。</li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 采用结构增敏与空间压缩感知技术，灵敏度提升 30% 以上。</li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 事件识别准确率 ≥93%，误报率 ≤5%。</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300">
+                        <a href="#" class="group inline-flex items-center text-xl font-bold mb-4 text-blue-600 hover:text-blue-800 transition-colors">
+                            光脉智联 SaaS 平台 <span class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform">➔</span>
+                        </a>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 内置 AI 声纹识别算法，自动识别管道泄漏、违规施工及微形变。</li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 集成 GIS 地理信息系统，支持二维/三维可视化数字孪生展示。</li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 底层采用国密 SM4 标准加密，提供零信任架构防护。</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="cases" class="py-20 bg-slate-100">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">真实落地案例</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <a href="#" class="group flex items-center font-bold text-lg mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                        珠海澳门拱北输水工程 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
-                    </a>
-                    <p class="text-sm text-slate-500 mb-4">全长超 15 公里输水管道。</p>
-                    <p class="text-slate-600">成功识别沿线第三方施工隐患 23 起，精准预警微小泄漏隐患 2 起。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <a href="#" class="group flex items-center font-bold text-lg mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                        济南东湖调水工程 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
-                    </a>
-                    <p class="text-sm text-slate-500 mb-4">全长 8.1 公里输水隧洞。</p>
-                    <p class="text-slate-600">成功捕捉隧洞衬砌 3 处微小形变隐患，系统数据准确率达 96% 以上。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <a href="#" class="group flex items-center font-bold text-lg mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                        某县域燃气管网监测 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
-                    </a>
-                    <p class="text-sm text-slate-500 mb-4">总长 320 公里燃气管网。</p>
-                    <p class="text-slate-600">成功识别违规开挖等振动隐患 17 起，误报率降至 3% 以下。</p>
+        <!-- SECTION 3: 落地案例 -->
+        <section id="cases" class="w-full h-screen snap-start flex items-center justify-center bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4 w-full animate-fade-in">
+                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">真实落地案例</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
+                        <a href="#" class="group flex items-center font-bold text-lg mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+                            珠海澳门拱北输水工程 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
+                        </a>
+                        <p class="text-sm text-slate-400 mb-4">全长超 15 公里输水管道。</p>
+                        <p class="text-slate-600 leading-relaxed">成功识别沿线第三方施工隐患 23 起，精准预警微小泄漏隐患 2 起。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
+                        <a href="#" class="group flex items-center font-bold text-lg mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+                            济南东湖调水工程 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
+                        </a>
+                        <p class="text-sm text-slate-400 mb-4">全长 8.1 公里输水隧洞。</p>
+                        <p class="text-slate-600 leading-relaxed">成功捕捉隧洞衬砌 3 处微小形变隐患，系统数据准确率达 96% 以上。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
+                        <a href="#" class="group flex items-center font-bold text-lg mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+                            某县域燃气管网监测 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
+                        </a>
+                        <p class="text-sm text-slate-400 mb-4">总长 320 公里燃气管网。</p>
+                        <p class="text-slate-600 leading-relaxed">成功识别违规开挖等振动隐患 17 起，误报率降至 3% 以下。</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="pricing" class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">三级盈利体系</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="border p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <a href="#" class="group flex items-center text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                        基础硬件建设 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
-                    </a>
-                    <p class="text-slate-500 mb-6">一次性投入，低门槛接入</p>
-                    <ul class="space-y-2 text-slate-600 mb-8">
-                        <li>设备标价：35 万元/台。</li>
-                        <li>管网综合报价：5-8 万元/公里。</li>
-                        <li>核心部件 100% 国产化替代。</li>
-                    </ul>
-                </div>
-                <div class="border p-8 rounded-lg shadow-md border-blue-500 relative hover:shadow-lg transition-shadow">
-                    <div class="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 text-sm rounded-bl-lg rounded-tr-lg">核心模式</div>
-                    <a href="#" class="group flex items-center text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                        SaaS 订阅服务 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
-                    </a>
-                    <p class="text-slate-500 mb-6">按年付费，持续升级</p>
-                    <ul class="space-y-2 text-slate-600 mb-8">
-                        <li>基础版：3 万元/年/百公里。</li>
-                        <li>专业版：8 万元/年/百公里。</li>
-                        <li>旗舰版：20 万元/年/项目。</li>
-                    </ul>
-                </div>
-                <div class="border p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <a href="#" class="group flex items-center text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                        数据安全与增值 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
-                    </a>
-                    <p class="text-slate-500 mb-6">针对政企客户的定制化服务</p>
-                    <ul class="space-y-2 text-slate-600 mb-8">
-                        <li>私有化部署费：30万-100 万元。</li>
-                        <li>收取 10%-15% 的年度系统安全运维费。</li>
-                        <li>提供数据安全合规审计及 API 二次开发授权。</li>
-                    </ul>
+        <!-- SECTION 4: 收费模式 -->
+        <section id="pricing" class="w-full h-screen snap-start flex items-center justify-center bg-white">
+            <div class="max-w-6xl mx-auto px-4 w-full animate-fade-in">
+                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">三级盈利体系</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="border border-slate-100 bg-slate-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                        <a href="#" class="group flex items-center text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+                            基础硬件建设 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
+                        </a>
+                        <p class="text-slate-400 mb-6 text-sm">一次性投入，低门槛接入</p>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li>• 设备标价：35 万元/台</li>
+                            <li>• 管网综合报价：5-8 万元/公里</li>
+                            <li>• 核心部件 100% 国产化替代</li>
+                        </ul>
+                    </div>
+                    <div class="border-2 p-8 rounded-2xl border-blue-500 bg-white shadow-lg relative hover:shadow-2xl transition-all duration-300 transform md:-translate-y-2">
+                        <div class="absolute -top-3 right-6 bg-blue-600 text-white px-3 py-1 text-xs font-semibold rounded-full shadow-sm">核心模式</div>
+                        <a href="#" class="group flex items-center text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+                            SaaS 订阅服务 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
+                        </a>
+                        <p class="text-slate-400 mb-6 text-sm">按年付费，持续升级</p>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li>• 基础版：3 万元/年/百公里</li>
+                            <li>• 专业版：8 万元/年/百公里</li>
+                            <li>• 旗舰版：20 万元/年/项目</li>
+                        </ul>
+                    </div>
+                    <div class="border border-slate-100 bg-slate-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                        <a href="#" class="group flex items-center text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+                            数据安全与增值 <span class="ml-2 text-sm opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all">➔</span>
+                        </a>
+                        <p class="text-slate-400 mb-6 text-sm">针对政企客户的定制化服务</p>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li>• 私有化部署费：30万-100 万元</li>
+                            <li>• 收取 10%-15% 的年度安全运维费</li>
+                            <li>• 提供合规审计及 API 二次开发授权</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="team" class="py-20 bg-slate-100">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">核心研发团队</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-600">
-                    <h4 class="font-bold text-xl mb-1">刘骏腾</h4>
-                    <p class="text-blue-600 text-sm mb-3">团队负责人 / 核心技术研发</p>
-                    <p class="text-slate-600 text-sm">光电信息科学与工程专业。深耕光纤传感技术研究，主导分布式光纤声学传感（DAS）系统及核心部件的研发。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold text-xl mb-1">王曦</h4>
-                    <p class="text-blue-600 text-sm mb-3">Web 前端开发交互</p>
-                    <p class="text-slate-600 text-sm">负责光纤传感监测系统的前端界面开发与数据可视化呈现，打造可视化操作界面。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold text-xl mb-1">陈钇夫</h4>
-                    <p class="text-blue-600 text-sm mb-3">商业化运营</p>
-                    <p class="text-slate-600 text-sm">主导项目市场定位及营销策略，对接市政、能源等市场渠道，构建三维盈利模式。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold text-xl mb-1">邢嫣然</h4>
-                    <p class="text-blue-600 text-sm mb-3">系统底层安全与保密技术</p>
-                    <p class="text-slate-600 text-sm">构建系统底层安全防护体系，保障海量监测数据的保密性与完整性。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold text-xl mb-1">田赞</h4>
-                    <p class="text-blue-600 text-sm mb-3">生产制造 / 技术落地</p>
-                    <p class="text-slate-600 text-sm">应用物理学专业。负责核心产品样机试制与生产工艺优化，推动技术向工业化产品转化。</p>
+        <!-- SECTION 5: 研发团队 + 页脚合并 -->
+        <section id="team" class="w-full h-screen snap-start flex flex-col justify-between bg-slate-50 pt-24 pb-6 relative">
+            <div class="max-w-6xl mx-auto px-4 w-full my-auto animate-fade-in">
+                <h2 class="text-3xl font-bold text-center mb-10 text-slate-900">核心研发团队</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-t-4 border-blue-600 hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-lg mb-1 text-slate-900">刘骏腾</h4>
+                        <p class="text-blue-600 text-xs font-medium mb-3">团队负责人 / 核心技术</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">光电信息专业。深耕光纤传感技术研究，主导分布式光纤声学传感（DAS）系统研发。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-t-4 border-slate-300 hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-lg mb-1 text-slate-900">王曦</h4>
+                        <p class="text-blue-600 text-xs font-medium mb-3">Web 前端开发交互</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">负责光纤传感监测系统的前端界面开发与数据可视化呈现，打造可视化操作界面。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-t-4 border-slate-300 hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-lg mb-1 text-slate-900">陈钇夫</h4>
+                        <p class="text-blue-600 text-xs font-medium mb-3">商业化运营</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">主导项目市场定位及营销策略，对接市政、能源等渠道，构建三维盈利模式。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-t-4 border-slate-300 hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-lg mb-1 text-slate-900">邢嫣然</h4>
+                        <p class="text-blue-600 text-xs font-medium mb-3">系统底层安全与保密</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">构建系统底层安全防护体系，保障海量监测数据的保密性与完整性。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-t-4 border-slate-300 hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-lg mb-1 text-slate-900">田赞</h4>
+                        <p class="text-blue-600 text-xs font-medium mb-3">生产制造 / 技术落地</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">应用物理学专业。负责核心产品样机试制与生产工艺优化，推动技术工业化落地。</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <!-- 页脚融入到最后一个全屏 Section 的底部 -->
+            <footer class="w-full text-slate-400 text-xs text-center border-t border-slate-200/60 pt-4">
+                <p>© 2026 光纤织网智守城脉团队. All rights reserved.</p>
+            </footer>
+        </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
-        <p>© 2026 光纤织网智守城脉团队. All rights reserved.</p>
-    </footer>
+    </div>
 
+    <!-- 动效核心脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: document.querySelector('.scroll-container'), // 以滚动容器为视口
+                rootMargin: '0px',
+                threshold: 0.2 // 当 Section 移入视口 20% 时触发动画
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // 获取当前 Section 内部带动画类的子元素
+                    const animateEl = entry.target.querySelector('.animate-fade-in');
+                    if (!animateEl) return;
+
+                    if (entry.isIntersecting) {
+                        // 进入视口，添加 active 类触发动画
+                        animateEl.classList.add('active');
+                    } else {
+                        // 离开视口（可选：移除 active 类，这样往回滚时也会重复触发动画）
+                        animateEl.classList.remove('active');
+                    }
+                });
+            }, observerOptions);
+
+            // 监听所有的 section
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
