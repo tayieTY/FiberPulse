@@ -6,273 +6,287 @@
     <title>光纤织网智守城脉 - 城市生命线智能监测</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 隐藏滚动条 */
         .scroll-container::-webkit-scrollbar { display: none; }
         .scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- 电影级丝滑动效引擎 --- */
+        /* 电影级动效 */
         .fade-up-element {
             opacity: 0;
-            transform: translateY(30px) scale(0.98);
-            transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1), 
-                        transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
-            will-change: transform, opacity;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        /* 激活状态 */
-        .section-active .fade-up-element {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+        .section-active .fade-up-element { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 100ms; }
+        .delay-2 { transition-delay: 200ms; }
+        .delay-3 { transition-delay: 300ms; }
+        .delay-4 { transition-delay: 400ms; }
+        .delay-5 { transition-delay: 500ms; }
 
-        /* 团队卡片流式延迟入场 */
-        .section-active .delay-1 { transition-delay: 100ms; }
-        .section-active .delay-2 { transition-delay: 250ms; }
-        .section-active .delay-3 { transition-delay: 400ms; }
-        .section-active .delay-4 { transition-delay: 550ms; }
-        .section-active .delay-5 { transition-delay: 700ms; }
-
-        /* 弹窗遮罩与动画 */
+        /* 弹窗样式优化 */
         dialog::backdrop {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(8px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
         }
         dialog[open] {
-            animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); }
+            from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
             to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        /* 科技感背景光晕动画 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        .glow-blob {
+            animation: float 8s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans h-full m-0">
+<body class="bg-slate-50 text-slate-800 font-sans h-full m-0 relative">
 
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-blue-400/20 rounded-full blur-[120px] glow-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-400/10 rounded-full blur-[150px] glow-blob" style="animation-delay: -4s;"></div>
+    </div>
+
+    <nav class="fixed w-full bg-white/70 backdrop-blur-xl shadow-sm z-50 border-b border-white/50">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="font-bold text-xl text-blue-600">光脉智联</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#intro" class="hover:text-blue-600 font-medium transition-colors">简介</a>
-                    <a href="#tech" class="hover:text-blue-600 font-medium transition-colors">核心技术</a>
-                    <a href="#cases" class="hover:text-blue-600 font-medium transition-colors">落地案例</a>
-                    <a href="#pricing" class="hover:text-blue-600 font-medium transition-colors">收费模式</a>
-                    <a href="#team" class="hover:text-blue-600 font-medium transition-colors">研发团队</a>
+            <div class="flex justify-between items-center h-20">
+                <div class="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500 tracking-tight">光脉智联</div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="#intro" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">简介</a>
+                    <a href="#tech" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">核心技术</a>
+                    <a href="#cases" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">落地案例</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">收费模式</a>
+                    <a href="#team" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">研发团队</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="scroll-container h-full overflow-y-auto snap-y snap-mandatory scroll-smooth">
+    <div class="scroll-container h-full overflow-y-auto snap-y snap-mandatory scroll-smooth relative z-10">
 
-        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center bg-blue-900 text-white relative">
-            <div class="max-w-4xl mx-auto px-4 text-center fade-up-element">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-wide">光纤织网 智守城脉</h1>
-                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100 leading-relaxed">
-                    针对全国超 290 万公里地下管线和百万座城市桥梁的老化风险，我们以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
+        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center bg-slate-900 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-4xl mx-auto px-4 text-center fade-up-element relative z-10">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">光纤织网 智守城脉</h1>
+                <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-blue-100/80 leading-relaxed font-light">
+                    针对全国超 290 万公里地下管线和百万座城市桥梁的老化风险，以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
                 </p>
-                <div class="animate-bounce mt-12 text-blue-300 text-sm">向下滑动探索 ↓</div>
+                <div class="inline-block px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium animate-bounce mt-8">向下滚动探索</div>
             </div>
         </section>
 
-        <section id="tech" class="w-full h-screen snap-start flex items-center justify-center bg-white">
+        <section id="tech" class="w-full h-screen snap-start flex items-center justify-center">
             <div class="max-w-6xl mx-auto px-4 w-full">
-                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900 fade-up-element">核心技术指标</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300 fade-up-element delay-1">
-                        <span class="inline-flex items-center text-xl font-bold mb-4 text-blue-600">硬件全域感知</span>
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 单套设备最大探测距离达 25 公里。</li>
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 事件定位精度 ≤5 米，报警响应时间 ≤5 秒。</li>
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 灵敏度提升 30% 以上，识别准确率 ≥93%。</li>
+                <h2 class="text-4xl font-extrabold text-center mb-16 text-slate-900 fade-up-element tracking-tight">核心技术指标</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-white/60 backdrop-blur-xl p-10 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-1">
+                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-black mb-6">📡</div>
+                        <h3 class="text-2xl font-bold mb-6 text-slate-800">硬件全域感知</h3>
+                        <ul class="space-y-4 text-slate-600 text-lg">
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-3">✓</span> 单套设备最大探测距离达 25 公里。</li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-3">✓</span> 事件定位精度 ≤5 米，报警响应时间 ≤5 秒。</li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-3">✓</span> 灵敏度提升 30% 以上，识别准确率 ≥93%。</li>
                         </ul>
                     </div>
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300 fade-up-element delay-2">
-                        <span class="inline-flex items-center text-xl font-bold mb-4 text-blue-600">光脉智联 SaaS 平台</span>
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 内置 AI 声纹识别算法，自动识别管道泄漏与微形变。</li>
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 集成 GIS 地理信息系统，支持三维可视化数字孪生。</li>
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 底层采用国密 SM4 标准加密，零信任架构防护。</li>
+                    <div class="bg-white/60 backdrop-blur-xl p-10 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-2">
+                        <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl font-black mb-6">☁️</div>
+                        <h3 class="text-2xl font-bold mb-6 text-slate-800">光脉智联 SaaS 平台</h3>
+                        <ul class="space-y-4 text-slate-600 text-lg">
+                            <li class="flex items-start"><span class="text-cyan-500 font-bold mr-3">✓</span> 内置 AI 声纹识别算法，自动识别泄漏与微形变。</li>
+                            <li class="flex items-start"><span class="text-cyan-500 font-bold mr-3">✓</span> 集成 GIS 系统，支持三维可视化数字孪生。</li>
+                            <li class="flex items-start"><span class="text-cyan-500 font-bold mr-3">✓</span> 底层采用国密 SM4 加密，零信任架构防护。</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="cases" class="w-full h-screen snap-start flex items-center justify-center bg-slate-50">
-            <div class="max-w-6xl mx-auto px-4 w-full">
-                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900 fade-up-element">真实落地案例</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 fade-up-element delay-1">
-                        <h3 class="font-bold text-lg mb-2 text-slate-800">珠海澳门拱北输水工程</h3>
-                        <p class="text-sm text-slate-400 mb-4">全长超 15 公里输水管道。</p>
-                        <p class="text-slate-600 leading-relaxed text-sm">成功识别沿线第三方施工隐患 23 起，精准预警微小泄漏隐患 2 起。</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 fade-up-element delay-2">
-                        <h3 class="font-bold text-lg mb-2 text-slate-800">济南东湖调水工程</h3>
-                        <p class="text-sm text-slate-400 mb-4">全长 8.1 公里输水隧洞。</p>
-                        <p class="text-slate-600 leading-relaxed text-sm">成功捕捉隧洞衬砌 3 处微小形变隐患，系统数据准确率达 96% 以上。</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 fade-up-element delay-3">
-                        <h3 class="font-bold text-lg mb-2 text-slate-800">某县域燃气管网监测</h3>
-                        <p class="text-sm text-slate-400 mb-4">总长 320 公里燃气管网。</p>
-                        <p class="text-slate-600 leading-relaxed text-sm">成功识别违规开挖等振动隐患 17 起，误报率降至 3% 以下。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="w-full h-screen snap-start flex items-center justify-center bg-white">
-            <div class="max-w-6xl mx-auto px-4 w-full">
-                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900 fade-up-element">三级盈利体系</h2>
+        <section id="cases" class="w-full h-screen snap-start flex items-center justify-center">
+            <div class="max-w-7xl mx-auto px-4 w-full">
+                <h2 class="text-4xl font-extrabold text-center mb-16 text-slate-900 fade-up-element tracking-tight">真实落地案例</h2>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="border border-slate-100 bg-slate-50 p-8 rounded-2xl transition-all duration-300 fade-up-element delay-1">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800">基础硬件建设</h3>
-                        <p class="text-slate-400 mb-6 text-sm">一次性投入，低门槛接入</p>
-                        <ul class="space-y-2 text-slate-600 text-sm">
-                            <li>• 设备标价：35 万元/台</li>
-                            <li>• 管网综合报价：5-8 万元/公里</li>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-2xl transition-all duration-500 fade-up-element delay-1 group">
+                        <div class="h-2 w-12 bg-blue-500 rounded-full mb-6 group-hover:w-full transition-all duration-500"></div>
+                        <h3 class="font-bold text-xl mb-3 text-slate-800">珠海澳门拱北输水工程</h3>
+                        <p class="text-blue-600 font-medium mb-5 text-sm bg-blue-50 inline-block px-3 py-1 rounded-md">全长超 15 公里</p>
+                        <p class="text-slate-600 leading-relaxed text-base">成功识别沿线第三方施工隐患 23 起，精准预警微小泄漏隐患 2 起，保障对澳供水生命线。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-2xl transition-all duration-500 fade-up-element delay-2 group">
+                        <div class="h-2 w-12 bg-indigo-500 rounded-full mb-6 group-hover:w-full transition-all duration-500"></div>
+                        <h3 class="font-bold text-xl mb-3 text-slate-800">济南东湖调水工程</h3>
+                        <p class="text-indigo-600 font-medium mb-5 text-sm bg-indigo-50 inline-block px-3 py-1 rounded-md">8.1 公里输水隧洞</p>
+                        <p class="text-slate-600 leading-relaxed text-base">成功捕捉隧洞衬砌 3 处微小形变隐患，系统数据与人工排查比对准确率达 96% 以上。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-2xl transition-all duration-500 fade-up-element delay-3 group">
+                        <div class="h-2 w-12 bg-cyan-500 rounded-full mb-6 group-hover:w-full transition-all duration-500"></div>
+                        <h3 class="font-bold text-xl mb-3 text-slate-800">某县域燃气管网监测</h3>
+                        <p class="text-cyan-600 font-medium mb-5 text-sm bg-cyan-50 inline-block px-3 py-1 rounded-md">320 公里燃气管网</p>
+                        <p class="text-slate-600 leading-relaxed text-base">成功识别违规开挖等振动隐患 17 起，通过算法迭代，将城市嘈杂环境误报率降至 3% 以下。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="w-full h-screen snap-start flex items-center justify-center">
+            <div class="max-w-6xl mx-auto px-4 w-full">
+                <h2 class="text-4xl font-extrabold text-center mb-16 text-slate-900 fade-up-element tracking-tight">三级盈利生态</h2>
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 fade-up-element delay-1">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-800">基础硬件建设</h3>
+                        <p class="text-slate-500 mb-8 font-medium">一次性投入，低门槛接入</p>
+                        <ul class="space-y-4 text-slate-600 font-medium">
+                            <li class="flex justify-between border-b border-slate-50 pb-2"><span>设备标价</span> <span class="text-slate-900">35万/台</span></li>
+                            <li class="flex justify-between border-b border-slate-50 pb-2"><span>管网综合</span> <span class="text-slate-900">5-8万/公里</span></li>
                         </ul>
                     </div>
-                    <div class="border-2 p-8 rounded-2xl border-blue-500 bg-white shadow-lg relative transition-all duration-300 transform md:-translate-y-2 fade-up-element delay-2">
-                        <div class="absolute -top-3 right-6 bg-blue-600 text-white px-3 py-1 text-xs font-semibold rounded-full shadow-sm">核心模式</div>
-                        <h3 class="text-xl font-bold mb-2 text-slate-800">SaaS 订阅服务</h3>
-                        <p class="text-slate-400 mb-6 text-sm">按年付费，持续升级</p>
-                        <ul class="space-y-2 text-slate-600 text-sm">
-                            <li>• 专业版：8 万元/年/百公里</li>
-                            <li>• 旗舰版：20 万元/年/项目</li>
+                    <div class="bg-gradient-to-b from-blue-600 to-indigo-700 p-10 rounded-3xl shadow-2xl relative transform md:-translate-y-4 fade-up-element delay-2 text-white border border-blue-400/30">
+                        <div class="absolute -top-4 right-8 bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 py-1.5 text-sm font-bold rounded-full shadow-lg">核心营收模型</div>
+                        <h3 class="text-2xl font-bold mb-2">SaaS 订阅服务</h3>
+                        <p class="text-blue-200 mb-8 font-medium">按年付费，持续升级</p>
+                        <ul class="space-y-4 text-blue-50 font-medium">
+                            <li class="flex justify-between border-b border-blue-500/50 pb-2"><span>专业版</span> <span>8万元/年/百公里</span></li>
+                            <li class="flex justify-between border-b border-blue-500/50 pb-2"><span>旗舰版</span> <span>20万元/年/项目</span></li>
                         </ul>
                     </div>
-                    <div class="border border-slate-100 bg-slate-50 p-8 rounded-2xl transition-all duration-300 fade-up-element delay-3">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800">数据安全与增值</h3>
-                        <p class="text-slate-400 mb-6 text-sm">针对政企客户的定制化服务</p>
-                        <ul class="space-y-2 text-slate-600 text-sm">
-                            <li>• 私有化部署费：30万-100 万元</li>
-                            <li>• 收取 10%-15% 的年度系统安全运维费</li>
+                    <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 fade-up-element delay-3">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-800">数据安全与增值</h3>
+                        <p class="text-slate-500 mb-8 font-medium">针对政企客户定制化</p>
+                        <ul class="space-y-4 text-slate-600 font-medium">
+                            <li class="flex justify-between border-b border-slate-50 pb-2"><span>私有化部署</span> <span class="text-slate-900">30-100万元</span></li>
+                            <li class="flex justify-between border-b border-slate-50 pb-2"><span>年度安全运维</span> <span class="text-slate-900">10%-15%</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="team" class="w-full h-screen snap-start flex flex-col justify-between bg-slate-50 pt-24 pb-6 relative">
-            <div class="max-w-6xl mx-auto px-4 w-full my-auto">
-                <h2 class="text-3xl font-bold text-center mb-3 text-slate-900 fade-up-element">核心研发团队</h2>
-                <p class="text-center text-slate-400 mb-12 text-sm fade-up-element">点击团队成员卡片，查看精修证件照及详细研发背景</p>
+        <section id="team" class="w-full h-screen snap-start flex flex-col justify-between pt-32 pb-6 relative">
+            <div class="max-w-7xl mx-auto px-4 w-full my-auto">
+                <div class="text-center mb-16 fade-up-element">
+                    <h2 class="text-4xl font-extrabold mb-4 text-slate-900 tracking-tight">核心研发团队</h2>
+                    <p class="text-slate-500 text-lg bg-white/50 backdrop-blur-sm inline-block px-6 py-2 rounded-full border border-slate-200/50">点击团队成员卡片，查看精修证件照及详细研发背景</p>
+                </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <div onclick="openModal('modal-liujunteng')" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-1">
-                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">刘</div>
-                        <h4 class="font-bold text-lg mb-1 text-slate-900">刘骏腾</h4>
-                        <p class="text-blue-600 text-xs font-medium">团队负责人</p>
+                    <div onclick="openModal('modal-liujunteng')" class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-white hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-1 hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-inner">刘</div>
+                        <h4 class="font-bold text-xl mb-1 text-slate-900">刘骏腾</h4>
+                        <p class="text-blue-600 text-sm font-semibold">团队负责人</p>
                     </div>
-                    <div onclick="openModal('modal-wangxi')" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-2">
-                        <div class="w-16 h-16 bg-slate-100 text-slate-600 rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">王</div>
-                        <h4 class="font-bold text-lg mb-1 text-slate-900">王曦</h4>
-                        <p class="text-blue-600 text-xs font-medium">Web 前端交互</p>
+                    <div onclick="openModal('modal-wangxi')" class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-white hover:border-cyan-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-2 hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-cyan-50 text-cyan-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-5 group-hover:scale-110 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-300 shadow-inner">王</div>
+                        <h4 class="font-bold text-xl mb-1 text-slate-900">王曦</h4>
+                        <p class="text-cyan-600 text-sm font-semibold">前端交互架构</p>
                     </div>
-                    <div onclick="openModal('modal-chenyifu')" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-3">
-                        <div class="w-16 h-16 bg-slate-100 text-slate-600 rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">陈</div>
-                        <h4 class="font-bold text-lg mb-1 text-slate-900">陈钇夫</h4>
-                        <p class="text-blue-600 text-xs font-medium">商业化运营</p>
+                    <div onclick="openModal('modal-chenyifu')" class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-white hover:border-indigo-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-3 hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-5 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-inner">陈</div>
+                        <h4 class="font-bold text-xl mb-1 text-slate-900">陈钇夫</h4>
+                        <p class="text-indigo-600 text-sm font-semibold">商业化运营</p>
                     </div>
-                    <div onclick="openModal('modal-xingyanran')" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-4">
-                        <div class="w-16 h-16 bg-slate-100 text-slate-600 rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">邢</div>
-                        <h4 class="font-bold text-lg mb-1 text-slate-900">邢嫣然</h4>
-                        <p class="text-blue-600 text-xs font-medium">系统底层安全</p>
+                    <div onclick="openModal('modal-xingyanran')" class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-white hover:border-purple-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-4 hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-50 text-purple-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-5 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-inner">邢</div>
+                        <h4 class="font-bold text-xl mb-1 text-slate-900">邢嫣然</h4>
+                        <p class="text-purple-600 text-sm font-semibold">底层架构安全</p>
                     </div>
-                    <div onclick="openModal('modal-tanzan')" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-5">
-                        <div class="w-16 h-16 bg-slate-100 text-slate-600 rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-4 group-hover:scale-110 transition-transform">田</div>
-                        <h4 class="font-bold text-lg mb-1 text-slate-900">田赞</h4>
-                        <p class="text-blue-600 text-xs font-medium">生产制造落地</p>
+                    <div onclick="openModal('modal-tanzan')" class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-white hover:border-emerald-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-5 hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-gradient-to-br from-emerald-100 to-emerald-50 text-emerald-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-5 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-inner">田</div>
+                        <h4 class="font-bold text-xl mb-1 text-slate-900">田赞</h4>
+                        <p class="text-emerald-600 text-sm font-semibold">生产制造落地</p>
                     </div>
                 </div>
             </div>
             
-            <footer class="w-full text-slate-400 text-xs text-center border-t border-slate-200/60 pt-4">
-                <p>© 2026 光纤织网智守城脉团队. All rights reserved.</p>
+            <footer class="w-full text-slate-400 font-medium text-sm text-center pt-8 pb-4 relative z-20 mix-blend-multiply">
+                <p>© 2026 光脉智联 - 光纤织网智守城脉团队. All rights reserved.</p>
             </footer>
         </section>
 
     </div>
 
-    <dialog id="modal-liujunteng" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl p-8 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none">
+    <dialog id="modal-liujunteng" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-10 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
-            <div class="w-32 h-44 bg-slate-100 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 flex items-center justify-center">
+            <div class="w-36 h-48 bg-slate-100 rounded-2xl shadow-inner mb-6 overflow-hidden border-4 border-white flex items-center justify-center ring-1 ring-slate-200">
                 <img src="./images/liujunteng.jpg" alt="刘骏腾 证件照" class="w-full h-full object-cover">
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-1">刘骏腾</h3>
-            <p class="text-blue-600 font-medium text-sm mb-4">团队负责人 / 核心技术研发</p>
-            <p class="text-slate-600 text-sm leading-relaxed text-center mb-6">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-2">刘骏腾</h3>
+            <p class="text-blue-600 font-bold bg-blue-50 px-4 py-1.5 rounded-full text-sm mb-6 tracking-wide">团队负责人 / 核心技术研发</p>
+            <p class="text-slate-600 text-base leading-relaxed text-center mb-8">
                 光电信息科学与工程专业。深耕分布式光纤传感技术研究数年，主导分布式光纤声学传感（DAS）系统及高灵敏度核心解调部件的底层技术研发。在结构增敏与空间压缩感知领域拥有多项核心技术突破。
             </p>
-            <button onclick="closeModal('modal-liujunteng')" class="px-6 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-colors shadow-sm">返回主页</button>
+            <button onclick="closeModal('modal-liujunteng')" class="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-wangxi" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl p-8 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none">
+    <dialog id="modal-wangxi" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-10 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
-            <div class="w-32 h-44 bg-slate-100 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 flex items-center justify-center">
+            <div class="w-36 h-48 bg-slate-100 rounded-2xl shadow-inner mb-6 overflow-hidden border-4 border-white flex items-center justify-center ring-1 ring-slate-200">
                 <img src="./images/wangxi.jpg" alt="王曦 证件照" class="w-full h-full object-cover">
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-1">王曦</h3>
-            <p class="text-blue-600 font-medium text-sm mb-4">Web 前端开发交互</p>
-            <p class="text-slate-600 text-sm leading-relaxed text-center mb-6">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-2">王曦</h3>
+            <p class="text-cyan-600 font-bold bg-cyan-50 px-4 py-1.5 rounded-full text-sm mb-6 tracking-wide">Web 前端架构与交互</p>
+            <p class="text-slate-600 text-base leading-relaxed text-center mb-8">
                 负责光纤传感安全监测系统的一线前端架构设计。专注于海量并发物联网数据的实时图形化渲染与大屏数字孪生呈现，利用高级交互动效打造高效、直观的城市生命线监测可视化界面。
             </p>
-            <button onclick="closeModal('modal-wangxi')" class="px-6 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-colors shadow-sm">返回主页</button>
+            <button onclick="closeModal('modal-wangxi')" class="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 w-full">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-chenyifu" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl p-8 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none">
+    <dialog id="modal-chenyifu" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-10 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
-            <div class="w-32 h-44 bg-slate-100 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 flex items-center justify-center">
+            <div class="w-36 h-48 bg-slate-100 rounded-2xl shadow-inner mb-6 overflow-hidden border-4 border-white flex items-center justify-center ring-1 ring-slate-200">
                 <img src="./images/chenyifu.jpg" alt="陈钇夫 证件照" class="w-full h-full object-cover">
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-1">陈钇夫</h3>
-            <p class="text-blue-600 font-medium text-sm mb-4">商业化运营负责人</p>
-            <p class="text-slate-600 text-sm leading-relaxed text-center mb-6">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-2">陈钇夫</h3>
+            <p class="text-indigo-600 font-bold bg-indigo-50 px-4 py-1.5 rounded-full text-sm mb-6 tracking-wide">商业化运营总责</p>
+            <p class="text-slate-600 text-base leading-relaxed text-center mb-8">
                 主导本项目的全球市场定位与 B端 拓客营销策略。长期对接各地市政工程、国家骨干管网及清洁能源集团等核心头部渠道，成功构建并推行了项目独创的“基础硬件建设+SaaS订阅服务+安全增值”三维盈利商业生态。
             </p>
-            <button onclick="closeModal('modal-chenyifu')" class="px-6 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-colors shadow-sm">返回主页</button>
+            <button onclick="closeModal('modal-chenyifu')" class="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:bg-indigo-600 hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 w-full">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-xingyanran" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl p-8 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none">
+    <dialog id="modal-xingyanran" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-10 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
-            <div class="w-32 h-44 bg-slate-100 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 flex items-center justify-center">
+            <div class="w-36 h-48 bg-slate-100 rounded-2xl shadow-inner mb-6 overflow-hidden border-4 border-white flex items-center justify-center ring-1 ring-slate-200">
                 <img src="./images/xingyanran.jpg" alt="邢嫣然 证件照" class="w-full h-full object-cover">
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-1">邢嫣然</h3>
-            <p class="text-blue-600 font-medium text-sm mb-4">系统底层安全与保密技术专家</p>
-            <p class="text-slate-600 text-sm leading-relaxed text-center mb-6">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-2">邢嫣然</h3>
+            <p class="text-purple-600 font-bold bg-purple-50 px-4 py-1.5 rounded-full text-sm mb-6 tracking-wide">底层架构安全与保密技术</p>
+            <p class="text-slate-600 text-base leading-relaxed text-center mb-8">
                 构建系统顶级的底层数据反劫持与数据防护体系。专攻城市脉络海量安全监测敏感数据的加密算法，基于商用国密 SM4 加密标准，为主导产品量身定制了全链路的零信任网络架构防护。
             </p>
-            <button onclick="closeModal('modal-xingyanran')" class="px-6 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-colors shadow-sm">返回主页</button>
+            <button onclick="closeModal('modal-xingyanran')" class="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:bg-purple-600 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 w-full">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-tanzan" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl p-8 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none">
+    <dialog id="modal-tanzan" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-10 max-w-lg w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
-            <div class="w-32 h-44 bg-slate-100 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 flex items-center justify-center">
+            <div class="w-36 h-48 bg-slate-100 rounded-2xl shadow-inner mb-6 overflow-hidden border-4 border-white flex items-center justify-center ring-1 ring-slate-200">
                 <img src="./images/tanzan.jpg" alt="田赞 证件照" class="w-full h-full object-cover">
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-1">田赞</h3>
-            <p class="text-blue-600 font-medium text-sm mb-4">生产制造 / 技术工业化落地</p>
-            <p class="text-slate-600 text-sm leading-relaxed text-center mb-6">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-2">田赞</h3>
+            <p class="text-emerald-600 font-bold bg-emerald-50 px-4 py-1.5 rounded-full text-sm mb-6 tracking-wide">生产制造与技术落地</p>
+            <p class="text-slate-600 text-base leading-relaxed text-center mb-8">
                 应用物理学专业。全面负责核心硬件传感样机的试制、供应链管理与工业化生产工艺优化。致力于缩短从实验室研究成果到量产工业级安全设备的转化周期，确保设备部件 100%国产化替代方案的高效闭环。
             </p>
-            <button onclick="closeModal('modal-tanzan')" class="px-6 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-colors shadow-sm">返回主页</button>
+            <button onclick="closeModal('modal-tanzan')" class="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 w-full">返回主页</button>
         </div>
     </dialog>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. 全屏平滑缓动算法 (Intersection Observer)
             const observerOptions = {
                 root: document.querySelector('.scroll-container'),
                 rootMargin: '0px',
-                threshold: 0.2 // 稍微进入即预备加载，避免生硬突变
+                threshold: 0.25 
             };
 
             const observer = new IntersectionObserver((entries) => {
@@ -280,6 +294,7 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('section-active');
                     } else {
+                        // 如果你不希望回滚时重复动画，可以注释掉下面这行
                         entry.target.classList.remove('section-active');
                     }
                 });
@@ -290,19 +305,15 @@
             });
         });
 
-        // 2. 沉浸式子网页弹窗交互控制
+        // 弹窗逻辑
         function openModal(id) {
             const modal = document.getElementById(id);
-            if (modal) {
-                modal.showModal();
-            }
+            if (modal) modal.showModal();
         }
 
         function closeModal(id) {
             const modal = document.getElementById(id);
-            if (modal) {
-                modal.close();
-            }
+            if (modal) modal.close();
         }
     </script>
 </body>
