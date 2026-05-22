@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-full overflow-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>珠海澳门拱北输水工程 - 光脉智联</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .scroll-container::-webkit-scrollbar { display: none; }
+        .scroll-container { -ms-overflow-style: none; scrollbar-width: none; scroll-behavior: smooth; }
+        .fade-up-element {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-1 { animation-delay: 150ms; }
+        .delay-2 { animation-delay: 300ms; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans h-full m-0 relative">
+    <nav class="fixed w-full z-50 top-0 left-0 px-4 py-4 pointer-events-none">
+        <div class="max-w-5xl mx-auto bg-white/80 backdrop-blur-lg rounded-2xl shadow-sm border border-white/60 px-6 py-3 flex justify-between items-center pointer-events-auto transition-all hover:shadow-md">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <span class="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600">光脉智联 | 落地案例</span>
+            </div>
+            <a href="index.html" class="px-5 py-2 text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors">
+                返回主页
+            </a>
+        </div>
+    </nav>
 
+    <div class="scroll-container h-full overflow-y-auto pt-28 pb-16 px-4 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <div class="w-full h-72 md:h-96 rounded-[2.5rem] overflow-hidden relative shadow-2xl shadow-slate-300/50 mb-12 fade-up-element group">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent z-10"></div>
+                <img src="./images/case1_bg.jpg" alt="珠海澳门拱北输水工程实景" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute bottom-0 left-0 z-20 p-8 md:p-12 w-full">
+                    <span class="inline-block px-4 py-1.5 bg-blue-500/80 backdrop-blur-md text-white text-sm font-bold rounded-full mb-4 shadow-sm">
+                        全长超 15 公里 | 核心民生工程
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
+                        珠海澳门拱北输水工程安全监测
+                    </h1>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-xl shadow-slate-200/40 border border-slate-100 fade-up-element delay-1 mb-8">
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8 mb-12">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">📌</div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">项目背景</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
+                            该输水工程为珠海向澳门供水的核心民生工程，输水管道全长超15公里，承担着澳门近80%的淡水供应任务。管道沿线地质环境复杂，周边存在频繁的工程施工活动，传统监测手段无法实现长距离、全覆盖的泄漏与第三方破坏监测，存在严重的供水安全隐患。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-10"></div>
+
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8 mb-12">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">⚙️</div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">落地配置</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
+                            沿输水管道全线布设本项目结构增敏型光纤传感阵列，配套部署分布式光纤传感解调仪，搭载光脉智联 SaaS 平台专业版。实现管道全线的振动、应变、声学信号同步监测，针对管道泄漏、第三方施工破坏设置分级预警值，对接工程管理单位应急处置系统。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-10"></div>
+
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+                    <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">📈</div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">实施效果</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
+                            项目投运以来，系统持续稳定运行，累计成功识别沿线第三方施工隐患 <strong class="text-slate-800">23 起</strong>，精准预警管道微小泄漏隐患 <strong class="text-slate-800">2 起</strong>，均在隐患扩大前完成处置，保障了对澳供水的绝对安全；事件识别准确率达 95% 以上，误报率降至 3% 以下，较传统监测手段减少无效巡检频次 80%，大幅降低了工程运维成本。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-slate-400 text-sm mt-12 fade-up-element delay-2">
+                © 2026 光脉智联 - 光纤织网智守城脉团队. All rights reserved.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
