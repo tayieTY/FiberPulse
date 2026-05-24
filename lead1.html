@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预约咨询 | 光脉智联 - 城市生命线智能监测</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .input-focus:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .submit-btn {
+            transition: all 0.2s ease;
+        }
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- 返回首页导航栏 -->
+    <div class="fixed top-5 left-5 z-50">
+        <a href="index.html" class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all text-slate-700 hover:text-blue-600 border border-white/60 text-sm font-medium">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            返回首页
+        </a>
+    </div>
+
+    <div class="min-h-screen flex items-center justify-center px-4 py-24">
+        <div class="max-w-2xl w-full bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+            <!-- 头部装饰 -->
+            <div class="gradient-bg px-8 py-8 text-white">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight">获取专属方案</h1>
+                </div>
+                <p class="text-blue-100 text-sm md:text-base mt-2">请您填写以下信息，我们的技术顾问将在24小时内与您联系，提供定制化报价与部署方案。</p>
+            </div>
+
+            <!-- 表单区：使用 FormSubmit 直接发送到邮箱 -->
+            <div class="p-8 md:p-10">
+                <form id="leadForm" action="https://formsubmit.co/3031439300@qq.com" method="POST">
+                    <!-- 基础配置 -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="光脉智联 新客户咨询">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://tayiety.github.io/FiberPulse/index.html">
+
+                    <div class="space-y-6">
+                        <!-- 姓名 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">姓名 <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" name="姓名" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 input-focus transition-all text-slate-800"
+                                placeholder="请输入您的姓名">
+                        </div>
+
+                        <!-- 联系方式 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">联系方式 <span class="text-red-500">*</span></label>
+                            <input type="text" id="contact" name="联系方式" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 input-focus transition-all text-slate-800"
+                                placeholder="手机号 或 邮箱">
+                            <p class="text-xs text-slate-400 mt-1.5">我们会通过此方式与您沟通方案细节</p>
+                        </div>
+
+                        <!-- 感兴趣的产品 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">感兴趣的产品或服务 <span class="text-red-500">*</span></label>
+                            <select id="product" name="感兴趣的产品" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 cursor-pointer text-slate-800">
+                                <option value="" disabled selected>—— 请选择 ——</option>
+                                <option value="感知基础设施（硬件+施工）">感知基础设施（硬件+施工）</option>
+                                <option value="SaaS基础版">SaaS基础版（3万/年/百公里）</option>
+                                <option value="SaaS专业版">SaaS专业版（8万/年/百公里）</option>
+                                <option value="SaaS旗舰版">SaaS旗舰版（20万/年/项目）</option>
+                                <option value="私有化部署 + 安全审计">私有化部署 + 安全审计</option>
+                                <option value="二次开发授权 / SDK">二次开发授权 / SDK</option>
+                                <option value="技术培训与咨询服务">技术培训与咨询服务</option>
+                                <option value="其他">其他（请在备注中说明）</option>
+                            </select>
+                        </div>
+
+                        <!-- 单位/机构 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">单位或机构</label>
+                            <input type="text" id="company" name="单位或机构"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 input-focus transition-all text-slate-800"
+                                placeholder="例如：xx市住建局、xx燃气公司（选填）">
+                        </div>
+
+                        <!-- 需求描述 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">需求描述</label>
+                            <textarea id="message" name="需求描述" rows="3"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 input-focus transition-all text-slate-800 resize-none"
+                                placeholder="请简要描述您的监测场景、管线长度或特殊需求..."></textarea>
+                        </div>
+
+                        <!-- 隐藏字段：来源页面，记录从哪个页面跳转过来 -->
+                        <input type="hidden" id="source" name="来源页面" value="">
+
+                        <!-- 提交按钮 -->
+                        <button type="submit"
+                            class="submit-btn w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 text-lg">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            提交意向 · 立即获取方案
+                        </button>
+                        <p class="text-center text-xs text-slate-400 mt-4">提交后我们将在24小时内响应，您的信息仅用于商务对接。</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取 URL 参数中的 product 值并自动选中对应产品
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const productParam = getQueryParam('product');
+        if (productParam) {
+            const selectEl = document.getElementById('product');
+            const decodedProduct = decodeURIComponent(productParam);
+            // 尝试精确匹配
+            let matched = false;
+            for (let i = 0; i < selectEl.options.length; i++) {
+                if (selectEl.options[i].value === decodedProduct) {
+                    selectEl.selectedIndex = i;
+                    matched = true;
+                    break;
+                }
+            }
+            // 若未精确匹配，尝试模糊匹配
+            if (!matched) {
+                for (let i = 0; i < selectEl.options.length; i++) {
+                    if (selectEl.options[i].value && selectEl.options[i].value.includes(decodedProduct)) {
+                        selectEl.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 记录来源页面（上级页面或者直接访问）
+        document.getElementById('source').value = document.referrer || '直接访问';
+    </script>
+</body>
+</html>
